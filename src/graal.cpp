@@ -3,28 +3,22 @@
 #include "../include/graal.h"
 
 
-
-/*bool cmp( const void *a, const void *b)
-{
-
-
-}*/
-
-
 const void * min( const void *first, const void *last, size_t size, Compare cmp )
 {
 
   // Supose that the first is the smallest 
-  const byte *smallest = (const byte *) first; // const int *smallest = first;
+  const void *smallest = first; // const int *smallest = first;
+
+  first = static_cast<const byte *> first + size; // first++;
   
   while( first != last ){
-    if( cmp( first, menor ) ){ // first < smallest?
+    if( cmp( first, smallest ) ){ // first < smallest?
 
       // update smallest
-      smallest = (const byte *) first;
+      smallest = first;
     }
 
-    first = first + size; // first++;
+    first = static_cast<const byte *> first + size; // first++;
   }
 
   return smallest;
