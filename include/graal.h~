@@ -1,0 +1,5 @@
+
+
+using Compare = bool (*)( const void *, const void * );
+
+bool cmp( const void *, const void * );
