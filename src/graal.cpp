@@ -1,4 +1,4 @@
-#include <cstring> //memcpy
+#include <cstring> // std::memcpy; std::memmove; std::memset;
 
 #include "../include/graal.h"
 
@@ -8,13 +8,13 @@ namespace graal{
   {
 
     // Supose that the first is the smallest 
-    const void *smallest = first; // const int *smallest = first;
+    const void *smallest = first; 
 
     first = static_cast<const byte *>(first) + size; // first++;
   
     while( first != last ){
       if( cmp( first, smallest ) ){ // first < smallest?
-
+	
 	// update smallest
 	smallest = first;
       }
@@ -30,7 +30,22 @@ namespace graal{
 
 
 void reverse( void * first, void * last, size_t size ){
+  byte temp;
 
+  // make last point to the last element in the array
+  last = static_cast<const byte *>(last) - size; // last--;
+  
+  while( first < last ){
+
+    // swap first and last using auxiar pointer temp
+    memcpy(&temp, first, size); //????????????
+    memcpy(first, last, size); //????????????
+    last = *temp;
+    
+    first = static_cast<const byte *>(first) + size; // first++;
+    last = static_cast<const byte *>(last) - size; // last--;
+  }
+  
 }
 
 void * copy( const void * first, const void * last, const void * d_first, size_t size ){

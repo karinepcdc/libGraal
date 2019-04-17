@@ -17,12 +17,22 @@ using byte = unsigned char;
 
 namespace graal{
 
-  /// Finds and return the first occurrence of the smallest element in a range devined over a generic array
-  /**
-   *
+  /// Finds and return the first occurrence of the smallest element in a range defined over a generic array
+  /***
+   * \param first pointer to the first array element
+   * \param last pointer to past last array element
+   * \param size size of each element in the array in bytes
+   * \param cmp binary functin that returns true if the element is less than the seccond element, or false otherwise
+   * \return pointer to the smallest element of the range
    */
   const void * min( const void *first, const void *last, size_t size, Compare cmp );
 
+    /// Reverses the order of the elements located in a range devined over a generic array
+  /***
+   * \param first pointer to the first array element
+   * \param last pointer to past last array element
+   * \param size size of each element in the array in bytes
+   */
   void reverse( void * first, void * last, size_t size );
 
   void * copy( const void * first, const void * last, const void * d_first, size_t size );
