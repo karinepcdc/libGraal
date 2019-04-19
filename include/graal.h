@@ -27,7 +27,7 @@ namespace graal{
    * \param cmp binary functin that returns true if the element is less than the seccond element, or false otherwise
    * \return pointer to the smallest element of the range
    */
-  const void * min( const void *first, const void *last, size_t size, Compare cmp );
+  const void * min( const void *first, const void *last, size_t size, Compare comp );
 
     /// Reverses the order of the elements located in a range devined over a generic array.
   /***

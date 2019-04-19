@@ -126,6 +126,7 @@ namespace graal
 
   bool any_of( const void * first, const void * last, size_t size, Predicate p ){
 
+    // if range is empty return true
     if( first == last ){ return true; }
 
     while( first != last ){
@@ -157,6 +158,7 @@ namespace graal
   bool equal( const void *first1, const void *last1, const void *first2, size_t size, Equal eq ){
 
     while( first1 != last1 ){
+      // check if any element is different
       if( !eq( first1, first2 ) ){
 	return false;
       }
@@ -165,12 +167,14 @@ namespace graal
       first2 = static_cast< const byte * >(first2) + size; // first2++;
     }
 
+    // if all elements are equal
     return true;
   }
 
   bool equal( const void *first1, const void *last1, const void *first2, const void *last2, size_t size, Equal eq ){
 
     while( first1 != last1 && first2 != last2 ){
+      // check if any element is different
       if( !eq( first1, first2 ) ){
 	return false;
       }
@@ -179,9 +183,9 @@ namespace graal
       first2 = static_cast< const byte * >(first2) + size; // first2++;
     }
 
-    if( first1 != last1 || first2 != last2 ){
+    if( first1 != last1 || first2 != last2 ){ // check if both range have reach the end
       return false;
-    } else {
+    } else { // if all elements are equal
       return true;
     }
 
@@ -240,7 +244,7 @@ namespace graal
     byte temp[size];
 
     while( first != last ){
-      // select the smaller elements accondantly with comp
+      // select the smaller elements accordingly with comp
       sel_min =(void *)  min( first, last, size, comp );
       
       // swap first with min
