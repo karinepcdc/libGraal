@@ -60,9 +60,10 @@ TEST(IntRange, MinFirstOcurrence)
             } );
     ASSERT_EQ( result , std::begin(A) );
 }
+
 /*}}}*/
-/* IntRange -> reverse() tests {{{*/
-/**************
+/* IntRange -> reverse() tests {{{ */
+
 TEST(IntRange, ReverseEntireArrayEven)
 {
     int A[]{ 1, 2, 3, 4, 5, 6 };
@@ -99,10 +100,10 @@ TEST(IntRange, ReversePartOfArrayOdd)
     graal::reverse( std::begin(A)+1, std::begin(A)+6, sizeof(A[0]) );
     ASSERT_TRUE( std::equal( std::begin(A), std::end(A), std::begin(A_E) ) );
 }
-**************/
+
 /*}}}*/
 /* IntRange -> copy() tests {{{*/
-/**************
+
 TEST(IntRange, CopyEntireArray)
 {
     int A[]{ 'a', 'b', 'c', 'd', 'e', 'f', 'g' };
@@ -138,11 +139,11 @@ TEST(IntRange, CopyUnaryArray)
     graal::copy( std::begin(A), std::end(A), std::begin(A_E), sizeof(A[0]) );
     ASSERT_TRUE( std::equal( std::begin(A), std::end(A), std::begin(A_E) ) );
 }
-**************/
+
 /*}}}*/
 
 /* IntRange -> clone() tests {{{*/
-/**************
+
 TEST(IntRange, CloneEntireArray)
 {
     int A[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -160,7 +161,7 @@ TEST(IntRange, ClonePartOfArray)
     ASSERT_TRUE( std::equal( std::begin(A)+3, std::end(A), result ) );
     delete [] result;
 }
-**************/
+
 /*}}}*/
 /* IntRange -> find_if() tests {{{*/
 /**************

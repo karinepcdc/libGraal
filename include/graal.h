@@ -1,6 +1,8 @@
 #ifndef GRAAL_H
 #define GRAAL_H
 
+#include <cstring> // size_t
+
 // generic pointer to function of binary comparison
 using Compare = bool (*)( const void *, const void * );
 
@@ -17,7 +19,7 @@ using byte = unsigned char;
 
 namespace graal{
 
-  /// Finds and return the first occurrence of the smallest element in a range defined over a generic array
+  /// Finds and return the first occurrence of the smallest element in a range defined over a generic array.
   /***
    * \param first pointer to the first array element
    * \param last pointer to past last array element
@@ -27,7 +29,7 @@ namespace graal{
    */
   const void * min( const void *first, const void *last, size_t size, Compare cmp );
 
-    /// Reverses the order of the elements located in a range devined over a generic array
+    /// Reverses the order of the elements located in a range devined over a generic array.
   /***
    * \param first pointer to the first array element
    * \param last pointer to past last array element
@@ -35,8 +37,23 @@ namespace graal{
    */
   void reverse( void * first, void * last, size_t size );
 
-  void * copy( const void * first, const void * last, const void * d_first, size_t size );
+  /// Copy received range [first;last) defined over an array into a new range beginning at d_first.
+  /***
+   * \param first pointer to the first array element.
+   * \param last pointer to past last array element.
+   * \param d_first pointer to the first element of the array to be copied.
+   * \param size size of each element in the array in bytes.
+   * \return pointer to the address just past the last element of the destination range.
+   */   
+  void * copy( const void * first, const void * last, void * d_first, size_t size );
 
+  /// Receive a range [first;last) defined over an array and return a new array containing a copy of the original range
+  /***
+   * \param first pointer to the first array element
+   * \param last pointer to past last array element
+   * \param size size of each element in the array in bytes
+   * \return pointer to the memory area that contains the copy of the original range.
+   */ 
   void * clone( const void * first, const void * last, size_t size );
 
   const void * find_if( const void * first, const void * last, size_t size, Predicate p );
