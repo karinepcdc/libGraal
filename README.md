@@ -18,3 +18,5 @@ To compile the library only we should follow these steps:
     cmake --build .: triggers the compiling process.
     make install: copies the library to the lib directory.
     ./run_tests: run all lib tests
+
+Project done for the class Programming Language I (2019.1).
